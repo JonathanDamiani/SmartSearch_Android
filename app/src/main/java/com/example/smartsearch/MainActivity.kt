@@ -1,14 +1,15 @@
 package com.example.smartsearch
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import java.io.File
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -22,14 +23,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onDetectFromCameraClicked(v: View)
+    fun onStartClicked(v: View)
     {
-        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT ).show()
-    }
-
-    fun onDetectFromFileClicked(v: View)
-    {
-        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT ).show()
+        if (!allPermissionsGranted()) {
+            getRuntimePermissions()
+        }
+        else
+        {
+            val intent = Intent(this, AppActivity::class.java).apply {
+            }
+            startActivity(intent)
+        }
     }
 
     // Get the required permission from androidManifest
