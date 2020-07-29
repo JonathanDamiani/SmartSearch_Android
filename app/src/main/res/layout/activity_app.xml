@@ -25,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollViewId"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="120dp"
@@ -40,17 +41,18 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="339dp"-->
-<!--        android:layout_marginStart="32dp"-->
-<!--        android:layout_marginTop="45dp"-->
-<!--        android:layout_marginEnd="32dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@android:drawable/ic_menu_crop" />-->
+    <ImageView
+        android:id="@+id/imageViewId"
+        android:layout_width="0dp"
+        android:layout_height="339dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_crop" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
