@@ -2,7 +2,6 @@ package com.example.smartsearch
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -20,8 +19,6 @@ import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.squareup.picasso.Picasso
 import org.json.JSONException
-import java.io.InputStream
-import java.net.URL
 
 
 class AppActivity : AppCompatActivity() {
@@ -56,7 +53,7 @@ class AppActivity : AppCompatActivity() {
                         handleText(visionText)
                     }
                     .addOnFailureListener { e ->
-
+                        Toast.makeText(this@AppActivity, "Fail", Toast.LENGTH_LONG).show()
                     }
 
             }
@@ -84,6 +81,7 @@ class AppActivity : AppCompatActivity() {
         }
     }
 
+    // Parsing the word to the api
     private fun jsonParse(string: String) {
         val url =
             "https://pixabay.com/api/?key=17493344-7e8b2b7a2997526e8a57feb9e&q=$string&image_type=photo&pretty=true"
@@ -92,21 +90,30 @@ class AppActivity : AppCompatActivity() {
 
             val jsonArray = response.getJSONArray("hits")
 
-            jsonArray[0]
-
-            val item = jsonArray.getJSONObject(0)
-
-            val url = item.getString("previewURL")
+            val imagesLayout = findViewById<LinearLayout>(R.id.imagesScroolLayout)
 
             val scrollView = findViewById<ScrollView>(R.id.scrollViewId)
 
             scrollView.visibility = View.INVISIBLE
 
-            val imageView = findViewById<ImageView>(R.id.imageViewId)
+            // Iterating to json and getting first 10 results
+            for (i in 0..10)
+            {
+                jsonArray[i]
 
+                val item = jsonArray.getJSONObject(i)
 
-            imageView.visibility = View.VISIBLE
-            Picasso.get().load(url).into(imageView)
+                val url = item.getString("previewURL")
+
+                val imageView = ImageView(this)
+                imageView.layoutParams = LinearLayout.LayoutParams(400, 400)
+                imageView.x = 20F //setting margin from left
+                imageView.y = 20F //setting margin from top
+
+                imagesLayout.addView(imageView)
+
+                Picasso.get().load(url).into(imageView)
+            }
 
         } catch (e: JSONException) {
             e.printStackTrace()

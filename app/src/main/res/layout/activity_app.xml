@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".AppActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ImageList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/ReadImageBtn"
         android:layout_width="0dp"
@@ -25,6 +34,24 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
+        android:id="@+id/ScrollViewImagesId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        >
+
+        <LinearLayout
+            android:id="@+id/imagesScroolLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ScrollView
         android:id="@+id/scrollViewId"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -40,19 +67,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/imageViewId"
-        android:layout_width="0dp"
-        android:layout_height="339dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="32dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_crop" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
